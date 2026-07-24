@@ -4,6 +4,8 @@
 
 Inject keyword-targeted poison documents, measure retrieval takeover, and test provenance quarantine without an LLM judge.
 
+![ragpoisonbench cover](demo/cover.png)
+
 ![ragpoisonbench workbench](demo/dashboard.png)
 
 ## What ships
