@@ -1,0 +1,12 @@
+{
+  "name": "ragpoisonbench",
+  "tagline": "RAG corpus poisoning and provenance benchmark",
+  "headline": "The retriever can be right for the attacker's reason.",
+  "summary": "Inject keyword-targeted poison documents, measure retrieval takeover, and test provenance quarantine without an LLM judge.",
+  "accent": "#df8cff",
+  "topics": "rag-security,data-poisoning,retrieval,provenance,llm-security,benchmark",
+  "sources": [
+    ["SafeRAG, ACL 2025", "https://aclanthology.org/2025.acl-long.230/"],
+    ["Benchmarking Poisoning Attacks against RAG", "https://arxiv.org/abs/2505.18543"]
+  ]
+}

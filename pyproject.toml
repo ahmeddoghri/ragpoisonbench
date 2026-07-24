@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ragpoisonbench"
+version = "0.1.0"
+description = "RAG corpus poisoning and provenance benchmark"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Ahmed Doghri"}]
+dependencies = []
+
+[project.scripts]
+ragpoisonbench = "ragpoisonbench.cli:main"
+
+[tool.setuptools]
+packages = ["ragpoisonbench"]
+
+[tool.setuptools.package-data]
+ragpoisonbench = ["web/*.html"]
