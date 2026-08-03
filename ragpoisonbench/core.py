@@ -66,11 +66,12 @@ def _evaluate(queries: list[dict], documents: list[dict]) -> tuple[float, list[d
     correct = 0
     for query in queries:
         ranking = retrieve(query["text"], documents)
-        top = ranking[0]
-        hit = top["id"] == query["expected_doc"]
+        top = ranking[0] if ranking else None
+        hit = top is not None and top["id"] == query["expected_doc"]
         correct += hit
-        without_top = [document for document in documents if document["id"] != top["id"]]
-        next_top = retrieve(query["text"], without_top)[0]["id"] if without_top else None
+        without_top = [document for document in documents if top is None or document["id"] != top["id"]]
+        next_ranking = retrieve(query["text"], without_top) if without_top else []
+        next_top = next_ranking[0]["id"] if next_ranking else None
         rows.append({"query_id": query["id"], "expected": query["expected_doc"], "top": top, "correct": hit, "next_without_top": next_top, "single_document_flip": not hit and next_top == query["expected_doc"]})
     return correct / max(1, len(queries)), rows
 
