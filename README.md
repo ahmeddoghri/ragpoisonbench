@@ -13,7 +13,7 @@ Inject keyword-targeted poison documents, measure retrieval takeover, and test p
 - Deterministic TF-IDF retriever with cosine ranking
 - Targeted keyword-stuffing attack corpus and clean references
 - Recall@1, attack success, provenance quarantine, and leave-one-document-out influence
-- CLI, JSON API, visual before/after workbench, Docker, tests, and CI
+- CLI, JSON API, visual before/after workbench, Docker, tests
 
 ## Run it end to end
 
