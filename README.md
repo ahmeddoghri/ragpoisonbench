@@ -1,5 +1,7 @@
 # ragpoisonbench
 
+[![tests](https://github.com/ahmeddoghri/ragpoisonbench/actions/workflows/tests.yml/badge.svg)](https://github.com/ahmeddoghri/ragpoisonbench/actions/workflows/tests.yml) [![case study](https://img.shields.io/badge/case%20study-adoghri.com-e0703e)](https://adoghri.com/project-59.html)
+
 **RAG corpus poisoning and provenance benchmark.**
 
 Inject keyword-targeted poison documents, measure retrieval takeover, and test provenance quarantine without an LLM judge.
