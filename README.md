@@ -56,6 +56,33 @@ the no-high-trust-document case, a fully empty corpus, and a live-server
 regression test; the published demo numbers (100% clean recall, 0%
 attacked recall, 100% recall restored after quarantine) are unaffected.
 
+## What the defense does not do
+
+Restoring recall from 0.0 to 1.0 is real, and it is narrower than it sounds:
+every poison document in the fixture arrives from a low-trust source. The
+quarantine never inspects content. It filters on provenance, so its
+protection is a step function at the trust threshold.
+
+```bash
+python -m ragpoisonbench.sweep
+```
+
+| poison trust | quarantined | attacked recall | defended recall |
+| ---: | ---: | ---: | ---: |
+| 0.10 | 4 | 0.0 | **1.0** |
+| 0.50 | 4 | 0.0 | **1.0** |
+| 0.59 | 4 | 0.0 | **1.0** |
+| 0.60 (= threshold) | 0 | 0.0 | **0.0** |
+| 0.80 | 0 | 0.0 | 0.0 |
+| 1.00 | 0 | 0.0 | 0.0 |
+
+Below the threshold the defense is total. At or above it, it does nothing at
+all: identical recall with and without it. So this measures the value of
+provenance filtering against untrusted uploads, and says nothing about a
+compromised trusted publisher or a stolen upload credential, which is the
+case where you need content-level detection instead. A test holds the step
+behaviour so the claim cannot quietly widen.
+
 ## Scope
 
 This isolates retrieval poisoning. Generation-layer prompt injection, model obedience, source truth, access control, and factual adjudication need separate evaluation.
